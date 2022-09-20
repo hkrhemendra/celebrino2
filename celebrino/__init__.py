@@ -20,7 +20,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 s = URLSafeTimedSerializer("Thisismyscrete")
 
 #Database config
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://hemendra123:celebrino@hemendra123.mysql.pythonanywhere-services.com/hemendra123$default'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/celebrino'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
