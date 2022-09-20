@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="FooYes - Quality delivery or takeaway food">
+    <meta name="author" content="Ansonika">
+    <title>FooYes - Quality delivery or takeaway food</title>
+	<img src="{{ url_for('static', filename='') }}" alt="">
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{{ url_for('static', filename='img/apple-touch-icon-57x57-precomposed.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{ url_for('static', filename='img/apple-touch-icon-72x72-precomposed.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ url_for('static', filename='img/apple-touch-icon-114x114-precomposed.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ url_for('static', filename='img/apple-touch-icon-144x144-precomposed.png') }}">
+
+    <!-- GOOGLE WEB FONT -->
+    <link rel="preconnect" href="{{ url_for('static', filename='https://fonts.gstatic.com') }}">
+	<link href="{{ url_for('static', filename='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap') }}" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap_customized.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="{{ url_for('static', filename='css/order-sign_up.css') }}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    
+</head>
+{% block body %}
+    
+{% endblock body %}
+<!-- COMMON SCRIPTS -->
+    <script src="{{ url_for('static', filename='js/common_scripts.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/common_func.js') }}"></script>
+</body>
+</html>

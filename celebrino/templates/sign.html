@@ -1,0 +1,31 @@
+{% extends 'sign_layout.html' %}
+{% block body %}
+
+
+<body id="register_bg">
+
+	<div id="register">
+		<aside>
+			<figure>
+				<a href="index.html"><img src="{{ url_for('static', filename='img/logo_sticky.png') }}" width="140"
+						height="35" alt=""></a>
+			</figure>
+			<!-- <div class="access_social">
+				<a href="#0" class="social_bt facebook">Login with Facebook</a>
+				<a href="#0" class="social_bt google">Login with Google</a>
+			</div> -->
+			<!-- <div class="divider"><span>Or</span></div> -->
+			<form method="POST" action="/recover_password" >
+				<div class="form-group">
+					<input class="form-control" type="email" name="email" placeholder="Email">
+					<i class="icon_mail_alt"></i>
+				</div>
+				<button type="submit" class="btn_1 gradient full-width" > Send Recovery Mail </button>
+				<div class="text-center mt-2"> {{message}} </div>
+			</form>
+			<div class="copy">© 2020 FooYes</div>
+		</aside>
+	</div>
+	<!-- /login -->
+
+	{% endblock body %}

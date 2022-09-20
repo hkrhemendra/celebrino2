@@ -1,0 +1,79 @@
+{% extends 'admin/admin_layout.html' %}
+{% block body %}
+    
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Venues</li>
+            </ol>
+            <!-- Example DataTables Card-->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> Venues</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Venue ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address </th>
+                                    <th>City</th>
+                                    <th>Venue Type</th>
+                                    <th>Category</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Venue ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address </th>
+                                    <th>City</th>
+                                    <th>Venue Type</th>
+                                    <th>Category</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                {% for i in venues %}
+
+                                <tr>
+                                    <td>{{i.venue_id}}</td>
+                                    <td>{{i.venue_name.title()}}</td>
+                                    <td> {{ i.email }} </td>
+                                    <td> {{ i.phone }} </td>
+                                    <td> {{ i.address.title() }} </td>
+                                    <td> {{ i.city.title() }} </td>
+                                    <td> {{ i.venue_type.title() }} </td>
+                                    <td> {{ i.category.title() }} </td>
+                                    {% if i.verified == 0 %}
+                                        <td> Not Verified</td>
+                                    {% else %}
+                                        <td>Verified</td>
+                                    {% endif %}
+                        
+                                </tr>
+                                
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>
+            <!-- /tables-->
+        </div>
+        <!-- /container-fluid-->
+    </div>
+    <!-- /container-wrapper-->
+    {% endblock body %}

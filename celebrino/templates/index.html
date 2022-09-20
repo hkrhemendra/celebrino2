@@ -1,0 +1,332 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<main>
+    <div id="carousel-home">
+        <div class="owl-carousel owl-theme">
+            <div class="owl-slide cover" style="background-image: url({{ url_for('static', filename='img/slides/slide_home_1.jpg') }})"><!-- /Would probably better not use LazyLoad fo the first item -->
+                <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                    <div class="container">
+                        <div class="row justify-content-center justify-content-md-end">
+                            <div class="col-lg-6 static">
+                                <div class="slide-text text-right white">
+                                    <h2 class="owl-slide-animated owl-slide-title">Enjoy<br>unique food</h2>
+                                    <p class="owl-slide-animated owl-slide-subtitle">
+                                        Huge variery of food at the best price
+                                    </p>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="grid-listing-filterscol.html" role="button">Read more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/owl-slide-->
+            <div class="owl-slide cover owl-lazy" data-src="{{ url_for('static', filename='img/slides/slide_home_2.jpg') }}">
+                <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                    <div class="container">
+                        <div class="row justify-content-center justify-content-md-start">
+                            <div class="col-lg-6 static">
+                                <div class="slide-text white">
+                                    <h2 class="owl-slide-animated owl-slide-title">Discover<br>and Order</h2>
+                                    <p class="owl-slide-animated owl-slide-subtitle">
+                                        The best restaurants at the best price
+                                    </p>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="grid-listing-filterscol.html" role="button">Read more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/owl-slide-->               
+            <div class="owl-slide cover owl-lazy" data-src="{{ url_for('static', filename='img/slides/slide_home_3.jpg') }}">
+                <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+                    <div class="container">
+                        <div class="row justify-content-center justify-content-md-start">
+                            <div class="col-lg-12 static">
+                                <div class="slide-text text-center white">
+                                    <h2 class="owl-slide-animated owl-slide-title">Enjoy<br>a friends dinner</h2>
+                                    <p class="owl-slide-animated owl-slide-subtitle">
+                                        The best restaurants at the best price
+                                    </p>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="grid-listing-filterscol.html" role="button">Read more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/owl-slide-->
+            </div>
+        </div>
+        <div id="icon_drag_mobile"></div>
+        <div class="wave hero"></div>
+    </div> 
+    <!-- /hero_single -->
+
+    <div class="container margin_30_60">
+        <div class="main_title center">
+            <span><em></em></span>
+            <h2>Popular Venues</h2>
+            <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p>
+        </div>
+        <!-- /main_title -->
+
+        <div class="owl-carousel owl-theme categories_carousel">
+            {% for i in range(0,10) %}
+            {% for venue,picture in popular %}
+            {% if picture.picture1 is not none %}
+            <div class="item_version_2">
+                <a href="/venue_details/{{venue.venue_id}}">
+                    <figure>
+                        <img src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}"
+                            data-src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}"
+                            alt="" class="owl-lazy" width="350" height="450">
+                        <div class="info">
+                            <h3>{{ venue.venue_name.title() }}</h3>
+                            <small>Avg price $40</small>
+                        </div>
+                    </figure>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+        <!-- /carousel -->
+    </div>
+    <!-- /container -->
+
+
+
+    <!-- /bg_gray -->
+
+    <div class="bg_gray">
+        <div class="container margin_0_40">
+            <div class="main_title">
+                <span><em></em></span>
+                <h2>Top Rated Cafes</h2>
+                <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                <a href="/cafes">View All &rarr;</a>
+            </div>
+            <div class="container margin_30_20">			
+                <div class="row">
+                    <div class="col-lg-12">      
+                        <div class="row">
+                            {% for venue,picture in cafe %}
+                                {% if picture.picture1 is not none %}
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="strip">
+                                        <figure>
+                                            <span class="ribbon off">15% off</span>
+                                            <img src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}" data-src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}" class="img-fluid lazy" alt="">
+                                            <a href="/venue_details/{{venue.venue_id}}" class="strip_info">
+                                                <small>Pizza</small>
+                                                <div class="item_title">
+                                                    <h3>{{ venue.venue_name.title() }}</h3>
+                                                    <small> {{ venue.address.title() }} </small>
+                                                </div>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                            
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- /col -->
+                </div>		
+            </div>
+            <!-- /row -->
+            <div class="banner lazy" data-bg="url({{ url_for('static', filename='img/banner_bg_cafes.jpg') }})">
+                <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+                    <div>
+                        <small>Celebrino</small>
+                        <h3>We Deliver Best Service to you</h3>
+                        <p>Enjoy a tasty food in minutes!</p>
+                        <a href="grid-listing-filterscol.html" class="btn_1 gradient">Start Now!</a>
+                    </div>
+                </div>
+                <!-- /wrapper -->
+            </div>
+            <!-- /banner -->
+        </div>
+    </div>
+
+    <div class="bg_gray">
+        <div class="container margin_60_40">
+            <div class="main_title">
+                <span><em></em></span>
+                <h2>Top Rated Restaurants</h2>
+                <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                <a href="/restaurants">View All &rarr;</a>
+            </div>
+            <div class="container margin_30_20">			
+                <div class="row">
+                    <div class="col-lg-12">      
+                        <div class="row">
+                            {% for venue,picture in restaurant %}
+                                {% if picture.picture1 is not none %}
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="strip">
+                                        <figure>
+                                            <span class="ribbon off">15% off</span>
+                                            <img src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}" data-src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}" class="img-fluid lazy" alt="">
+                                            <a href="/venue_details/{{venue.venue_id}}" class="strip_info">
+                                                <small>Pizza</small>
+                                                <div class="item_title">
+                                                    <h3>{{ venue.venue_name.title() }}</h3>
+                                                    <small> {{ venue.address.title() }} </small>
+                                                </div>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                            
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- /col -->
+                </div>		
+            </div>
+            <!-- /row -->
+            <div class="banner lazy" data-bg="url({{ url_for('static', filename='img/banner_bg_restaurant.jpg') }})">
+                <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+                    <div>
+                        <small>Celebrino</small>
+                        <h3>We Deliver Best Service to you</h3>
+                        <p>Enjoy a tasty food in minutes!</p>
+                        <a href="grid-listing-filterscol.html" class="btn_1 gradient">Start Now!</a>
+                    </div>
+                </div>
+                <!-- /wrapper -->
+            </div>
+            <!-- /banner -->
+        </div>
+    </div>
+
+    <div class="bg_gray">
+        <div class="container margin_60_40">
+            <div class="main_title">
+                <span><em></em></span>
+                <h2>Top Rated Hotels</h2>
+                <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                <a href="/hotels">View All &rarr;</a>
+            </div>
+            <div class="container margin_30_20">			
+                <div class="row">
+                    <div class="col-lg-12">      
+                        <div class="row">
+                            {% for venue,picture in hotel %}
+                                {% if picture.picture1 is not none %}
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="strip">
+                                        <figure>
+                                            <span class="ribbon off">15% off</span>
+                                            <img src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}" data-src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}" class="img-fluid lazy" alt="">
+                                            <a href="/venue_details/{{venue.venue_id}}" class="strip_info">
+                                                <small>Pizza</small>
+                                                <div class="item_title">
+                                                    <h3>{{ venue.venue_name.title() }}</h3>
+                                                    <small> {{ venue.address.title() }} </small>
+                                                </div>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                            
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- /col -->
+                </div>		
+            </div>
+            <div class="banner lazy" data-bg="url({{ url_for('static', filename='img/banner_bg_hotels.jpg') }})">
+                <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+                    <div>
+                        <small>Celebrino</small>
+                        <h3>We Deliver Best Service to you</h3>
+                        <p>Enjoy a tasty food in minutes!</p>
+                        <a href="grid-listing-filterscol.html" class="btn_1 gradient">Start Now!</a>
+                    </div>
+                </div>
+                <!-- /wrapper -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="shape_element_2">
+        <div class="container margin_60_0">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="box_how">
+                                <figure><img
+                                        src="{{ url_for('static', filename='img/lazy-placeholder-100-100-white.png')}}"
+                                        data-src="{{ url_for('static',filename='img/how_1.svg')}}" alt="" width="150"
+                                        height="167" class="lazy"></figure>
+                                <h3>Easly Order</h3>
+                                <p>Faucibus ante, in porttitor tellus blandit et. Phasellus tincidunt metus
+                                    lectus
+                                    sollicitudin.</p>
+                            </div>
+                            <div class="box_how">
+                                <figure><img
+                                        src="{{ url_for('static', filename='img/lazy-placeholder-100-100-white.png')}}"
+                                        data-src="{{ url_for('static',filename='img/how_2.svg')}}" alt="" width="130"
+                                        height="145" class="lazy"></figure>
+                                <h3>Quick Booking </h3>
+                                <p>Maecenas pulvinar, risus in facilisis dignissim, quam nisi hendrerit
+                                    nulla, id
+                                    vestibulum.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 align-self-center">
+                            <div class="box_how">
+                                <figure><img
+                                        src="{{ url_for('static', filename='img/lazy-placeholder-100-100-white.png')}}"
+                                        data-src="{{ url_for('static',filename='img/how_3.svg')}}" alt="" width="150"
+                                        height="132" class="lazy"></figure>
+                                <h3>Easy to Select</h3>
+                                <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero,
+                                    a
+                                    feugiat eros.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-3 d-block d-lg-none"><a href="/register"
+                            class="btn_1 medium gradient pulse_bt mt-2">Register Now!</a></p>
+                </div>
+                <div class="col-lg-5 offset-lg-1 align-self-center">
+                    <div class="intro_txt">
+                        <div class="main_title">
+                            <span><em></em></span>
+                            <h2>Start Your Booking Now</h2>
+                        </div>
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                            imperdiet
+                            libero id nisi euismod, sed porta est consectetur deserunt.</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat
+                            nulla pariatur.</p>
+                        <p><a href="/register" class="btn_1 medium gradient pulse_bt mt-2">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /shape_element_2 -->
+
+</main>
+<!-- /main -->
+
+{% endblock body %}

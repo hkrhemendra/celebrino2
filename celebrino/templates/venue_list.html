@@ -1,0 +1,88 @@
+{% extends 'layout2.html' %}
+{% block body %}
+	
+
+	<main>
+		<form action="/search" method="POST">
+			<div class="page_header element_to_stick">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block">
+							<h1>145 restaurants in Convent Street 2983</h1>
+						</div>
+						<div class="col-xl-4 col-lg-5 col-md-5">
+							<div class="search_bar_list">
+								<input type="text" name="keyword" class="form-control" placeholder="Cafes">
+								<button type="submit"><i class="icon_search"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<center>
+			<h3 style="color: red;">
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				{% for message in messages %}
+				{{ message }}
+				{% endfor %}
+				{% endif %}
+				{% endwith %}
+			</h3>
+		</center>
+		<!-- /page_header -->
+		<!-- /filters_full -->
+		<!-- /Map -->
+
+		<!-- /filters -->
+		<div class="container margin_30_20">
+
+			<!-- /promo -->
+			<div class="container margin_30_20">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							{% for venue,picture in venues %}
+							{% if picture.picture is not none %}
+							<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+								<div class="strip">
+									<figure>
+										<span class="ribbon off">15% off</span>
+										<img src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}"
+											data-src="{{ url_for('static', filename='venue/'+ venue.venue_name.replace(' ','_') + '/' + 'pictures/' + picture.picture1  ) }}"
+											class="img-fluid lazy" alt="">
+										<a href="/venue_details/{{venue.venue_id}}" class="strip_info">
+											<small>Pizza</small>
+											<div class="item_title">
+												<h3>{{ venue.venue_name.title() }}</h3>
+												<small> {{ venue.address.title() }} </small>
+											</div>
+										</a>
+									</figure>
+								</div>
+							</div>
+							{% endif %}
+							{% endfor %}
+
+						</div>
+						<!-- /row -->
+					</div>
+					<!-- /col -->
+				</div>
+			</div>
+			<!-- /strip row -->
+			<div class="pagination_fg">
+				<a href="#">&laquo;</a>
+				<a href="#" class="active">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+				<a href="#">&raquo;</a>
+			</div>
+		</div>
+		<!-- /container -->
+	</main>
+	<!-- /main -->
+	{% endblock body %}

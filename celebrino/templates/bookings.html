@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="hero_single inner_pages background-image"
+data-background="url({{ url_for('static', filename='img/bookings.jpg') }})">
+<div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 col-lg-10 col-md-8">
+                <h1> Bookings </h1>
+                <p>A successful Party booking experience</p>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+</div>
+<div class="wave gray hero"></div>
+</div>
+    
+<div class="bg_gray">
+    <div class="container margin_60_40">
+        <table class="table custom-table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Venue Name</th>
+                <th scope="col">Booking Type</th>
+                <th scope="col">Date </th>
+                <th scope="col">Status </th>
+                <th scope="col">Actions </th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for order,venue in bookings %}
+                <tr>
+                    <td>1</td>
+                    <td> {{ order.order_id }} </td>
+                    <td> {{ venue.venue_name.title() }} </td>
+                    <td> {{ order.event_type.title() }} </td>
+                    <td> {{ order.date }} </td>
+                    <td> {{ order.order_status.title() }} </td>
+                    <td> Cancel <a href="/cancel_order/{{order.order_id}}"> <i class="icon_close_alt2" style="color: black;" aria-hidden="true"></i> </a> </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{% endblock body %}

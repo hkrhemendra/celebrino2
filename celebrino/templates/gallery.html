@@ -1,0 +1,40 @@
+{% extends 'layout2.html' %}
+{% block body %}
+
+<div class="main-custom ">
+    <div class="custom-area page_header element_to_stick">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block">
+                    <h1 style="font-size: 2rem; ">Video Gallery</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% if type == 'video' %}
+                {% for video in gallery %}
+                <div class=" col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                    <a data-fancybox="video-gallery" data-src="{{ url_for('static', filename='gallery/videos/'+video.file_name) }}" data-width="640" data-height="360">
+                        <img src="{{ url_for('static', filename='gallery/videos/poster/'+video.poster) }}" width="200"
+                            height="150" /></a>
+                </div>
+
+                {% endfor %}
+            {% else %}
+                {% for image in gallery %}
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                    <a data-fancybox="video-gallery" data-src="{{ url_for('static', filename='gallery/images/'+image.file_name) }}" data-width="640" data-height="360">
+                        <img src="{{ url_for('static', filename='gallery/images/'+image.file_name) }}" width="300"
+                            height="200" /></a>
+                </div>
+
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

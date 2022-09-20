@@ -1,0 +1,135 @@
+{% extends 'admin/venue_layout.html' %}
+{% block body %}
+
+
+<!-- /Navigation-->
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Add listing</li>
+        </ol>
+        <!-- /box_general-->
+        <!-- /box_general-->
+        <!-- /box_general-->
+        <div class="box_general padding_bottom">
+            <div class="header_box version_2">
+                <h2><i class="fa fa-list"></i>Add item to Menu List</h2>
+            </div>
+            <div class="wrapper_indent">
+                <form action="/submit_menu" method='POST' id="register" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Menu Category</label>
+                        <!-- <input type="text" name="item_category" class="form-control" placeholder="EX. Starters"> -->
+                        <select name="item_category" class="form-control"  id="item">
+                            <option value="starters"> Starters </option>
+                            <option value="maincourse"> Main Course </option>
+                            <option value="desserts"> Desserts </option>
+                            <option value="drinks"> Drinks </option>
+                            <option value="snacks"> Snacks </option>
+                          </select>
+                    </div>
+                    <div class="menu-item-section clearfix">
+                        <h4>Menu item #1</h4>
+                    </div>
+                    <div class="strip_menu_items">
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <label>Upload Picture</label>
+                                <input required type="file" class="form-control" name="picture" id="name">
+                            </div>
+                            <div class="col-xl-9">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label>Title</label>
+                                            <input type="text" name="item_title" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input type="text" name="item_price" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Short description</label>
+                                    <input type="text" name="item_description" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Item options</label>
+                                    <div class="item_opt_wrapper">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group radio_c_group">
+                                                    <label class="container_radio">Veg
+                                                        <input type="radio" value="veg" name="options"
+                                                            checked="checked">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <label class="container_radio">Non-veg
+                                                        <input type="radio" value="non-veg" name="options">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- End form-group -->
+
+                            </div><!-- End row -->
+                        </div><!-- End strip_menu_items -->
+                    </div>
+                    <button type="submit" class="btn_1 medium"> Save </button>
+                    <!-- /box_general-->
+                </form>
+            </div>
+
+            <!-- /.container-fluid-->
+        </div>
+        <!-- /.container-wrapper-->
+
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="#0">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $('.editor').summernote({
+                fontSizes: ['10', '14'],
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough']],
+                    ['fontsize', ['fontsize']],
+                    ['para', ['ul', 'ol', 'paragraph']]
+                ],
+                placeholder: 'Write here ....',
+                tabsize: 2,
+                height: 200
+            });
+        </script>
+        {% endblock body %}

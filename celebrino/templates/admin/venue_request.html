@@ -1,0 +1,74 @@
+{% extends 'admin/admin_layout.html' %}
+{% block body %}
+    
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">New Venues</li>
+            </ol>
+            <!-- Example DataTables Card-->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> Venues</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Venue ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Address </th>
+                                    <th>City</th>
+                                    <th>Venue Type</th>
+                                    <th>Gumasta</th>
+                                    <th>Fssai</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Venue ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Address </th>
+                                    <th>City</th>
+                                    <th>Venue Type</th>
+                                    <th>Gumasta</th>
+                                    <th>Fssai</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                {% for venue,document in venue_request %}
+
+                                <tr>
+                                    <td>{{venue.venue_id}}</td>
+                                    <td>{{venue.venue_name}}</td>
+                                    <td> {{ venue.phone }} </td>
+                                    <td> {{ venue.address }} </td>
+                                    <td> {{ venue.city }} </td>
+                                    <td> {{ venue.venue_type }} </td>
+                                    <td> <a target="_blank" href="{{ url_for('static',filename='venue/'+venue.venue_name.replace(' ','_')+'/documents/'+document.gumasta) }}"> Gumasta </a> </td>
+                                    <td>  <a target="_blank" href="{{ url_for('static',filename='venue/'+venue.venue_name.replace(' ','_')+'/documents/'+document.fssai) }}"> Fssai </a> </td>
+                                    <td> <a href="/approve_venue/{{venue.venue_id}}" class="btn btn-primary" > Accept </a> </td>                        
+                                </tr>
+                                
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>
+            <!-- /tables-->
+        </div>
+        <!-- /container-fluid-->
+    </div>
+    <!-- /container-wrapper-->
+    {% endblock body %}
