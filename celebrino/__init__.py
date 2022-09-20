@@ -4,6 +4,16 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail
 from itsdangerous import URLSafeTimedSerializer
 import os
+import sshtunnel
+
+sshtunnel.SSH_TIMEOUT = 5.0
+sshtunnel.TUNNEL_TIMEOUT = 5.0
+
+tunnel = sshtunnel.SSHTunnelForwarder(
+    ('ssh.pythonanywhere.com'), ssh_username='hemendra123',ssh_password = 'Hemendra@123',
+    remote_bind_address=('hemendra123.mysql.pythonanywhere-services.com', 3306)
+
+)
 
 #Flask app
 app = Flask(__name__)
@@ -16,11 +26,13 @@ ALLOWED_EXTENSIONS = {'jpg', 'jpeg'}
 ALLOWED_EXTENSIONS_GALLERY = {'jpg','jpeg','mp4'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+tunnel.start()
+
 #Tokenization
 s = URLSafeTimedSerializer("Thisismyscrete")
 
 #Database config
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/celebrino'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://hemendra123:celebrino123@hemendra123.mysql.pythonanywhere-services.com/hemendra123$default'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
